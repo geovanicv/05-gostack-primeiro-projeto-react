@@ -1,8 +1,8 @@
-import styled, { keyframes /*, css*/} from 'styled-components'
+import styled, { keyframes /* , css */ } from 'styled-components';
 
 export const Container = styled.div`
   max-width: 700px;
-  background: #FFF;
+  background: #fff;
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
@@ -17,7 +17,6 @@ export const Container = styled.div`
     svg {
       margin-right: 10px;
     }
-
   }
 `;
 
@@ -33,7 +32,6 @@ export const Form = styled.form`
     border-radius: 4px;
     font-size: 16px;
   }
-
 `;
 
 const rotate = keyframes`
@@ -47,9 +45,9 @@ const rotate = keyframes`
 
 export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
-  disabled: props.loading,
+  disabled: props.loading
 }))`
-  background: #5EC5DB;
+  background: #5ec5db;
   border: 0;
   padding: 0 15px;
   margin-left: 10px;
@@ -64,7 +62,7 @@ export const SubmitButton = styled.button.attrs(props => ({
     opacity: 0.6;
 
     svg {
-    animation: ${rotate} 2s linear infinite;
+      animation: ${rotate} 2s linear infinite;
     }
   }
 `;
@@ -86,23 +84,8 @@ export const List = styled.ul`
     }
 
     a {
-      color: #5EC5DB;
+      color: #5ec5db;
       text-decoration: none;
     }
   }
 `;
-
-
-
-/*export const Title = styled.h1`
-  color: #fff;
-
-  font-size: 24px;
-  color: ${props => props.error ? 'red' : '#7159c1'} ;
-  font-family: Arial, Helvetica, sans-serif;
-
-  small {
-    font-size: 14px;
-    color: #333;
-  }
-`*/

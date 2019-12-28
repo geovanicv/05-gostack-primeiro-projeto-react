@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
+
   extends: [
     'plugin:react/recommended',
     'airbnb',
@@ -31,6 +32,7 @@ module.exports = {
       'warn',
       { extensions: ['.jsx', '.js'] }
     ],
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    'react/state-in-constructor': 'off',
   },
 };
