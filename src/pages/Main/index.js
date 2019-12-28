@@ -1,15 +1,36 @@
 import React, { Component } from 'react';
-import { FaGithubAlt, FaPlus } from 'react-icons/fa'
+import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
 
-import { Container, Form, SubmitButton } from './styles';
+import { Container, Form, List, SubmitButton } from './styles';
 
 export default class Main extends Component {
 
   state = {
     newRepo: '',
     repositories: [],
+    loading: false,
+  }
+
+
+  //local storage
+  //carregar os dados
+  componentDidMount(){
+    const repositories = localStorage.getItem('repositories')
+    if(repositories){
+      this.setState({ repositories: JSON.parse(repositories) })
+    }
+  }
+
+  //salvar os dados
+  componentDidUpdate(_, prevState){
+    const { repositories } = this.state;
+
+    if(prevState.repositories !== repositories){
+      localStorage.setItem('repositories', JSON.stringify(repositories))
+    }
   }
 
   handleInputChange = e => {
@@ -18,6 +39,8 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault()
+
+    this.setState({ loading: true })
 
     const { newRepo, repositories } = this.state
 
@@ -30,12 +53,13 @@ export default class Main extends Component {
     this.setState({
       repositories: [...repositories, data],
       newRepo: '',
+      loading: false,
     })
   }
 
   render() {
 
-    const { newRepo } = this.state
+    const { newRepo, loading, repositories} = this.state
 
     return (
       <Container>
@@ -51,10 +75,23 @@ export default class Main extends Component {
             value={newRepo}
             onChange={this.handleInputChange} />
 
-          <SubmitButton disable>
-            <FaPlus color="#FFF" size={14}/>
+          <SubmitButton loading={loading}>
+            { loading ? (
+              <FaSpinner color="#FFF" size={14} />
+            ) : (
+              <FaPlus color="#FFF" size={14}/>
+            )}
           </SubmitButton>
         </Form>
+
+      <List>
+        {repositories.map(repository => (
+          <li key={repository.name}>
+            <span>{repository.name}</span>
+            <Link to={`/repository/${encodeURIComponent(repository.name)}`}>Detalhes</Link>
+          </li>
+        ))}
+      </List>
 
 
       </Container>
