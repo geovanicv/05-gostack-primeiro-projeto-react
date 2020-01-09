@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import Container from '../../Components/Container/index';
 
-import { Owner, Loading, IssuesList } from './styles';
+import { Owner, Loading, IssuesList, Filter, FilterButton } from './styles';
 
 export default class Repository extends Component {
   state = {
@@ -15,6 +15,10 @@ export default class Repository extends Component {
   };
 
   async componentDidMount() {
+    this.filtro();
+  }
+
+  filtro = async (filtro = 'closed') => {
     const { match } = this.props;
     const repoName = decodeURIComponent(match.params.repository);
 
@@ -27,7 +31,7 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}`),
       api.get(`/repos/${repoName}/issues`, {
         params: {
-          state: 'open',
+          state: filtro,
           per_page: 5
         }
       })
@@ -41,7 +45,7 @@ export default class Repository extends Component {
 
     // console.log(repository);
     // console.log(issues);
-  }
+  };
 
   render() {
     const { repository, issues, loading } = this.state;
@@ -58,7 +62,15 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-
+        <Filter>
+          <FilterButton onClick={() => this.filtro('all')}>Todas</FilterButton>
+          <FilterButton onClick={() => this.filtro('open')}>
+            Abertas
+          </FilterButton>
+          <FilterButton onClick={() => this.filtro('closed')}>
+            Fechadas
+          </FilterButton>
+        </Filter>
         <IssuesList>
           {issues.map(issue => (
             <li key={String(issue.id)}>
