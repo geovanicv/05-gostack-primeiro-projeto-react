@@ -107,15 +107,16 @@ export const Filter = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-`;
-export const FilterButton = styled.button`
-  height: 34px;
-  width: 90px;
-  font-weight: bold;
-  font-size: 14px;
-  color: #5ec5db;
-  border: 1px solid #5ec5db;
-  background: #fff;
-  border-radius: 5px;
+  justify-content: space-between;
+
+  button {
+    height: 34px;
+    width: 90px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #5ec5db;
+    border: 1px solid #5ec5db;
+    background: #fff;
+    border-radius: 5px;
+  }
 `;

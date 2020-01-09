@@ -63,6 +63,21 @@ export const List = styled.ul`
       border-top: 1px solid #eee;
     }
 
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      button {
+        margin-left: 8px;
+        padding: 5px 10px;
+        border: none;
+        color: #fff;
+        background: #5ec5db;
+        border-radius: 5px;
+      }
+    }
+
     a {
       color: #5ec5db;
       text-decoration: none;

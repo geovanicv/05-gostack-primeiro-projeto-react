@@ -68,6 +68,12 @@ export default class Main extends Component {
     }
   };
 
+  removeRepo = repository => {
+    const { repositories } = this.state;
+
+    this.setState({ repositories: repositories.filter(r => r !== repository) });
+  };
+
   render() {
     const { newRepo, loading, repositories, error, errorcatched } = this.state;
 
@@ -99,9 +105,17 @@ export default class Main extends Component {
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                Detalhes
-              </Link>
+              <div>
+                <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                  Detalhes
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => this.removeRepo(repository)}
+                >
+                  -
+                </button>
+              </div>
             </li>
           ))}
         </List>
