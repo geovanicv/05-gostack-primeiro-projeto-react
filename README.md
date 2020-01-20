@@ -22,10 +22,10 @@ Esse projeto foi desenvolvido no Bootcamp GoStack da Rocketseat com as seguintes
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/geovanicv/05-gostack-primeiro-projeto-react.git
+$ git clone https://github.com/geovanicv/fav-repositories
 
 # Navegue até a pasta
-$ cd 05-gostack-primeiro-projeto-react.git
+$ cd fav-repositories
 
 # Instale as dependências
 $ yarn install
