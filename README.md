@@ -27,10 +27,10 @@ Esse projeto foi desenvolvido no Bootcamp GoStack da Rocketseat com as seguintes
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/geovanicv/fav-repositories
+$ git clone https://github.com/geovanicv/issues-repositories
 
 # Navegue até a pasta
-$ cd fav-repositories
+$ cd issues-repositories
 
 # Instale as dependências
 $ yarn install
